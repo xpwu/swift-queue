@@ -127,6 +127,33 @@ class xqueueTests: XCTestCase {
 
 		self.wait(for: [expectation], timeout: 1)
 	}
+	
+	func testSelect() async {
+//		let expectation = self.expectation(description: "testSelect")
+		let ch = Channel<Int>(buffer: 2)
+		async let s1 = {
+			await ch.Receive()
+		}
+		
+		async let s2 = {
+			await ch.Receive()
+		}
+		
+		Task {
+			await ch.Send(10)
+			await ch.Send(20)
+			await ch.Send(30)
+			await ch.Send(40)
+			await ch.Send(50)
+		}
+		
+		let r = await race([s1, s2])
+		XCTAssertEqual(r, 10)
+		
+//		expectation.fulfill()
+//
+//		self.wait(for: [expectation], timeout: 10)
+	}
 
 }
 

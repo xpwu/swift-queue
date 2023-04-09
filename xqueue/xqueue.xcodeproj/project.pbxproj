@@ -12,6 +12,7 @@
 		A41A661329E25E890074A39B /* xqueue.h in Headers */ = {isa = PBXBuildFile; fileRef = A41A660729E25E880074A39B /* xqueue.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		A41A661D29E25F140074A39B /* channel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A661C29E25F140074A39B /* channel.swift */; };
 		A41A661F29E2AD6C0074A39B /* queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A661E29E2AD6C0074A39B /* queue.swift */; };
+		A41A662129E2BE890074A39B /* select.swift in Sources */ = {isa = PBXBuildFile; fileRef = A41A662029E2BE890074A39B /* select.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +32,7 @@
 		A41A661129E25E890074A39B /* xqueueTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = xqueueTests.swift; sourceTree = "<group>"; };
 		A41A661C29E25F140074A39B /* channel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = channel.swift; sourceTree = "<group>"; };
 		A41A661E29E2AD6C0074A39B /* queue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = queue.swift; sourceTree = "<group>"; };
+		A41A662029E2BE890074A39B /* select.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = select.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 				A41A660729E25E880074A39B /* xqueue.h */,
 				A41A661C29E25F140074A39B /* channel.swift */,
 				A41A661E29E2AD6C0074A39B /* queue.swift */,
+				A41A662029E2BE890074A39B /* select.swift */,
 			);
 			path = xqueue;
 			sourceTree = "<group>";
@@ -200,6 +203,7 @@
 			files = (
 				A41A661D29E25F140074A39B /* channel.swift in Sources */,
 				A41A661F29E2AD6C0074A39B /* queue.swift in Sources */,
+				A41A662129E2BE890074A39B /* select.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
