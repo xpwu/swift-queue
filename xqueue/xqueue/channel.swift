@@ -173,6 +173,10 @@ extension Channel: SendChannel {
 			}
 		})
 	}
+	
+	public func Send() async ->Void where E == Void {
+		await Send(())
+	}
 }
 
 extension Channel: ReceiveChannel {

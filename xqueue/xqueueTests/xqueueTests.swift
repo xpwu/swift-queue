@@ -112,6 +112,21 @@ class xqueueTests: XCTestCase {
 		
 		self.wait(for: [expectation], timeout: 10)
 	}
+	
+	func testChannelVoid() async {
+		let expectation = self.expectation(description: "testChannelVoid")
+		
+		let ch = Channel<Void>(buffer: 0)
+		
+		Task {
+			await ch.Receive()
+			expectation.fulfill()
+		}
+		
+		await ch.Send()
+
+		self.wait(for: [expectation], timeout: 1)
+	}
 
 }
 
