@@ -7,16 +7,25 @@
 
 import Foundation
 
-class XQueue<T> {
+class tCtx {
+	@TaskLocal
+	static var ctx: Int = 0
+}
+
+public class XQueue<T> {
 	private var queue = Channel<(T) async ->Void>(buffer: .Unlimited)
+	private var underlying: T?
 	
 	init(_ initT: @escaping () async ->T) {
-		Task {
+		Task {[unowned self] in
 			let t = await initT()
+			underlying = t
 			
-			while true {
-				let run = await queue.Receive()
-				await run(t)
+			await tCtx.$ctx.withValue(1) {
+				while true {
+					let run = await queue.Receive()
+					await run(t)
+				}
 			}
 		}
 	}
@@ -24,6 +33,11 @@ class XQueue<T> {
 
 extension XQueue {
 	func en<R>(block: @escaping (T) async ->R) async -> R {
+		// process nest
+		if tCtx.ctx == 1 {
+			return await block(underlying!)
+		}
+		
 		let ch = Channel<R>(buffer: 1)
 		
 		await queue.Send{t in
