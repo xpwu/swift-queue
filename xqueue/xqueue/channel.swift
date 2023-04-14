@@ -184,13 +184,13 @@ extension Channel: ReceiveChannel {
 		await withCheckedContinuation({ (continuation: CheckedContinuation<E, Never>) in
 			Task {
 				let (todo, value) = await chan.receive {value in
-					continuation.resume(with: .success(value))
+					continuation.resume(returning: value)
 				}
 				
 				todo?()
 				
 				if value != nil {
-					continuation.resume(with: .success(value!))
+					continuation.resume(returning: value!)
 				}
 			}
 		})
