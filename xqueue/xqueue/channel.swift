@@ -144,7 +144,7 @@ actor channel<E> {
 public class Channel<E> {
 	var chan: channel<E>
 	
-	init(buffer: Int = 0) {
+	public init(buffer: Int = 0) {
 		chan = channel(buffer)
 	}
 }

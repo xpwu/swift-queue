@@ -16,7 +16,7 @@ public class XQueue<T> {
 	private var queue = Channel<(T) async ->Void>(buffer: .Unlimited)
 	private var underlying: T?
 	
-	init(_ initT: @escaping () async ->T) {
+	public init(_ initT: @escaping () async ->T) {
 		Task {[unowned self] in
 			let t = await initT()
 			underlying = t
@@ -32,7 +32,7 @@ public class XQueue<T> {
 }
 
 extension XQueue {
-	func en<R>(block: @escaping (T) async ->R) async -> R {
+	public func en<R>(block: @escaping (T) async ->R) async -> R {
 		// process nest
 		if tCtx.ctx == 1 {
 			return await block(underlying!)
